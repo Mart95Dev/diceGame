@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=BioRhyme&family=Cabin:wght@600&family=Karma&family=Lato:ital,wght@1,300&display=swap');
+
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+root{
+    --fontBody: 'Lato', sans-serif;
+    --color1 : #AD956B;
+    --color2 : #D4D3DC;
+    --color3 : #317AC1;
+    --color4 : #E1A624;
+}
