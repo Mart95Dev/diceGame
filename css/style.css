@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
 
+
+/* reset */
 *,::before,::after{
     margin: 0;
     padding: 0;
@@ -8,15 +10,23 @@
     list-style: none;
 }
 
-root{   
+/* variables couleur pour le style */
+:root{   
     --color1 : #AD956B;
-    --color2 : #D4D3DC;
-    --color3 : #317AC1;
+    --color2 : #D4D3DC; /*couleur joueur inactif */
+    --color3 : #317AC1; /* couleur joueur actif  */
     --color4 : #E1A624;
 }
 
+html{
+    font-size: 16px;
+}
+
+/* mise en page de la page*/
+
 body{
     font-family: "lato", sans-serif;
+    font-size: calc(0.5rem + 2vw);
     font-size: 1rem;
     background-image: url("../images/fond2.jpg");
     background-repeat: no-repeat;
@@ -27,4 +37,74 @@ body{
     display: flex;
      justify-content: center;
      align-items: center;     
+}
+
+/* mise en page du cadre du jeu   */
+.container-game{     
+   position: relative;
+    border: 20px solid var(--color3);
+    border-image: linear-gradient(-360deg, var(--color1), var(--color4));
+    border-image-slice: 1;
+    width: 55%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 3fr 3fr;    
+    grid-auto-rows: minmax(105px, auto);  
+    grid-template-areas:     
+    "player1 player2"
+    "player1 player2"
+    "player1 player2"
+    "player1 player2";
+}
+
+/* postion du container parameters     */
+.parameters-game    { 
+   position: absolute;
+    margin-top: 0;
+    height: 100%;
+    width: 100%;  
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: transparent;
+}
+
+.container-player-1{     
+    grid-area: player1;
+    background-color: var(--color3); 
+    
+}
+
+
+.container-player-2{ 
+    grid-area: player2;
+    background-color: var(--color2);
+}   
+
+.container-text{
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* box shadow container game */
+.container-player-1,
+.container-player-2{
+    box-shadow: 4px 8px 11px -1px rgba(0,0,0,0.8);
+    -webkit-box-shadow: 4px 8px 11px -1px rgba(0,0,0,0.8);
+    -moz-box-shadow: 4px 8px 11px -1px rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.dice{
+    display: block;
+    margin: auto;
+    width: 6vh;
 }

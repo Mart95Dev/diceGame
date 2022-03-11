@@ -8,46 +8,31 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Dice Game</title>
 </head>
-<body>
-    <nav .container-new-game>
-        <button class="new-game"></button>
-    </nav>
-    <section>
-        <div class="style-game">
-            <div class="container-game">
-                <div class="player-1">
-                    <p>player 1</p>
-                    <div class="global-player-1">
-
+<body>   
+        <div class="container-game">            
+                <div class="container-player-1">
+                    <div class="container-text">
+                        <h1>player 1</h1>
+                        <p class="global">score global player 1</p>
+                        <p class="round">score temporaire player 1</p>                        
                     </div>
-                </div>
-
-                <div class="dice">
-
-                </div>
-                <div class="player-2">
-                    <p>player 2</p>
-                    <div class="global-player-2">
-
+                </div>               
+                <div class="container-player-2">
+                    <div class="container-text">
+                        <h1>player 2</h1>
+                        <p class="global">score global player 2</p>
+                        <p class="round">score temporaire player 2</p>                        
                     </div>
-    
-                </div>
-                <div class="round-player-1">
-
-                </div>
-                <div class="parameters-dice">
-                    <img src="" alt="" class="roll-dice">
-                    <img src="" alt="" class="hold-game">
-                </div>
-                <div class="round-player-2">
-
-                </div>    
-            </div>
-        </div>
-    </section>
-    <footer>
-
-    </footer>
+                </div>   
+                <div class="parameters-game">
+                    <p class="new-game">new game</p>
+                    <img class="dice" src="./images/dice1.png" alt="face du dé">
+                    <p class="roll-dice">roll dice</p>
+                    <p class="hold">hold</p>
+                </div>      
+        </div>  
+        
+   
     <!-- lien vers le fichier js -->
     <script src="/js/app.js"></script>
 </body>
