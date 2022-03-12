@@ -10,29 +10,29 @@
 </head>
 <body>   
         <div class="container-game">            
-                <div class="container-player-1 left bottom">
+                <div class="container-player-1 left bottom player-active">
                     <div class="container-text">
                         <div class="title-player">
                             <h2>player 1</h2>
-                            <p class="circle"></p>
+                            <p id="circle-player-1"></p>
                         </div>                       
-                        <p class="global">43</p>
+                        <p class="global global-player-1"></p>
                         <div class="round">
                             <p class="current">current</p>
-                            <p class="number-round">11</p> 
+                            <p class="number-round round-player-1">0</p> 
                         </div>
                     </div>
                 </div>               
-                <div class="container-player-2 bottom right color-player-disable">
+                <div class="container-player-2 bottom right">
                     <div class="container-text">
                         <div class="title-player">
                             <h2>player 2</h2>
-                            <p class="circle"></p>
+                            <p id="circle-player-2"></p>
                         </div>                     
-                        <p class="global">72</p>
+                        <p class="global global-player-2">99</p>
                         <div class="round">
                             <p class="current">current</p>
-                            <p class="number-round">0</p> 
+                            <p class="number-round round-player-2">45</p> 
                         </div>                         
                     </div>
                 </div>   
@@ -44,7 +44,7 @@
                     
                     
                     <div class="bloc-dice">
-                        <img class="dice" src="./images/dice5.png" alt="face du dé">
+                        <img id="dice" class="dice"  alt="face du dé">
                     </div>
                    
                     <div class="bloc-items">                        
