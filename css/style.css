@@ -47,8 +47,23 @@ body{
     width: 100%;
 }   
 
+.title-player{
+    display: flex;
+    align-items: center;
+   justify-content: center;
+}
+
 .player-active{
     background-color: var(--color3);
+}
+
+.circle{
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color:var(--color4);
 }
 
 .player-disable{
@@ -104,13 +119,14 @@ body{
 }
 
 /* mise en page du texte du jeu */
-h1,
+
 .global,
 .number-round{
     text-align: center;
 }
 
-h1{
+h2{
+    font-size: 2.1rem;
     margin-top: 20px;    
     margin-bottom: 20px;
 }
