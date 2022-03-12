@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
+
+
+/* reset */
+*,::before,::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+/* variables couleur pour le style */
+:root{   
+    --color1 : #AD956B;
+    --color2 : #D4D3DC; /*couleur joueur inactif */
+    --color3 : #317AC1; /* couleur joueur actif  */
+    --color4 : #E1A624;
+}
+
+html{
+    font-size: 16px;
+}
