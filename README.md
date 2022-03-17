@@ -1,4 +1,4 @@
-# diceGame
+# Dice Game
 C'est un jeu de dé qui se joue à deux.
 
  - Objectif : Atteindre les 100 points ou plus 
