@@ -58,6 +58,7 @@ body{
     background-color: var(--color3);
 }
 
+/* point player actif  */
 .circle{
     margin-left: 10px;
     width: 15px;
@@ -89,7 +90,6 @@ body{
 }
 
 /* box shadow container game */
-
 .right {
     box-shadow: 5px 0 5px -5px rgb(20, 20, 20);
 }
@@ -116,7 +116,6 @@ body{
 }
 
 /* mise en page du texte du jeu */
-
 .global,
 .number-round{
     text-align: center;
@@ -204,6 +203,7 @@ h2{
     animation: shake 0.5s infinite;
 }
 
+/* animation dice */
 @keyframes shake{
  from{
     transform: rotate(0deg); 
@@ -212,8 +212,6 @@ h2{
      transform: rotate(360deg);
  }
 }
-
-
 
 .bloc-items{   
     display: flex;
