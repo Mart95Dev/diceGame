@@ -56,6 +56,7 @@ body{
 
 .player-active{
     background-color: var(--color3);
+    height: 100%;
 }
 
 /* point player actif  */
@@ -265,3 +266,55 @@ button:hover{
     font-size: 1.1rem;
     text-transform: uppercase;
 }
+
+/**************************************************************/
+/* --- responsive --- */
+@media (min-width: 360px) {
+.container-game{
+    min-width: 360px;
+}
+
+h2{
+    font-size: 1.5rem;
+}
+
+.bloc-new-game{
+margin-top: -90px;
+}
+
+.bloc-dice{
+
+}
+
+.items-roll-dice{
+    margin-top: 20px;
+}
+
+.round{
+margin-top: 80px;
+}
+
+.text-dice{
+    visibility: hidden;
+}
+}
+
+@media (min-width: 800px) {
+        
+       
+    .bloc-new-game{
+    margin-top: -20px;
+    }    
+    
+    .items-roll-dice{
+        margin-top: 110px;
+    }
+    
+    .round{
+    margin-top: 80px;
+    }
+    
+    .text-dice{
+        visibility: visible;
+    }
+    }
