@@ -1,5 +1,5 @@
 // variables  DOM//
-const players = document.querySelectorAll('.players');
+
 const containerPlayer1 = document.querySelector('.container-player-1');
 const containerPlayer2 = document.querySelector('.container-player-2');
 const circlePlayer1 = document.getElementById('circle-player-1');
@@ -27,13 +27,15 @@ const imagesDice = [
 let diceValue = 0;
 let attributPlayer = 0;
 let diceValueTemp = 0;
+let countRollDice = 0;
+
 //////////////////////////////////////////
 
 
 //functions ---------------------------------------//
 
 //function initialisation text-dice new game
-const diceNewGame = ()=>{
+const diceInit = ()=>{
     dice.setAttribute("src", imagesDice[0]);
     diceValue = 0;
     textDice.textContent="";
@@ -53,41 +55,44 @@ const messageDiceHold = ()=>{
     }else{
         textDice.textContent = 'your pass game to Player 1'
     }
+
+    if(Number(scoreGlobalPlayer1.textContent) >= 100){
+        textDice.textContent = 'You have Won Player 1'
+        buttonDiceRolls.classList.add('items-disable');
+        buttonHold.classList.add('items-disable');
+    }
+
 }
 
-const scoreCurrent = ()=>{
+// calcul score current player
+const calcScoreCurrent = ()=>{
+    
     if(Number(containerPlayer1.getAttribute('active')) === 1){  
               
-        if(diceValue === 0){
-            diceValueTemp = 0;
-            let scoreCurrentTemp = diceValueTemp;    
-             scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;
-        }else{
-            diceValueTemp = diceValue + 1;
-            let scoreCurrentTemp = diceValueTemp;    
+        if(diceValue === 0 && countRollDice === 0){
+            // diceValueTemp = 0;
+            let scoreCurrentTemp = diceValue;    
+             scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;             
+        }else{           
+            // diceValueTemp = diceValue + 1;
+            let scoreCurrentTemp = diceValue + 1;    
             scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;
         };
     } 
     
     if(Number(containerPlayer2.getAttribute('active')) === 1){
-        if(diceValue === 0){
+        if(diceValue === 0 && countRollDice === 0){
             diceValueTemp = 0;
-            console.log(diceValueTemp)
             let scoreCurrentTemp = diceValueTemp;    
-             scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;
-        }else{
+             scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;             
+        }else{           
             diceValueTemp = diceValue + 1;
-            console.log(diceValueTemp)
             let scoreCurrentTemp = diceValueTemp;    
             scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;
         };
     } 
 }
     
-
-
-
-
 // function utile au demarrage du jeu et au clic du bouton new game
 const reset = ()=>{
     circlePlayer1.classList.add('circle');
@@ -102,10 +107,11 @@ const reset = ()=>{
     scoreGlobalPlayer2.textContent = 0;
     scoreCurrentPlayer1.textContent = 0;
     scoreCurrentPlayer2.textContent = 0;
-    diceNewGame();
+    diceInit();
     textDice.classList.remove('text-dice'); 
     buttonHold.classList.remove('items-hold');
-    buttonHold.classList.add('items-hold-disable');
+    buttonHold.classList.add('items-disable');
+    countDice = 1;
     return;   
 }
 
@@ -133,10 +139,10 @@ if (attributPlayer === 1){
     circlePlayer1.classList.remove('circle');
     containerPlayer1.classList.remove('player-active');
     containerPlayer1.classList.add('player-disable');
-    calcScoreGlobalPlayer1();
-    scoreCurrentPlayer1.textContent = 0;    
     containerPlayer1.removeAttribute("active", "1");
     containerPlayer1.setAttribute("active", "0");
+    calcScoreGlobalPlayer1();
+    scoreCurrentPlayer1.textContent = 0;       
     //modifie etat inactif à actif pour player 2
     circlePlayer2.classList.add('circle');
     containerPlayer2.classList.add('player-active');
@@ -146,12 +152,13 @@ if (attributPlayer === 1){
     containerPlayer2.setAttribute("active", "1");   
     diceimages();
     messageDiceHold();
+    countRollDice = 0 ;
 } else{    
     //modifie etat inactif à actif pour player 1
     circlePlayer1.classList.add('circle');
     containerPlayer1.classList.add('player-active');
     containerPlayer1.classList.remove('player-disable');    
-    scoreCurrentPlayer1.textContent = 0;
+    scoreCurrentPlayer1.textContent = 0; 
     containerPlayer1.removeAttribute("active", "0");
     containerPlayer1.setAttribute("active", "1");
     //modifie etat actif à inactif pour player 2
@@ -164,33 +171,41 @@ if (attributPlayer === 1){
     containerPlayer2.setAttribute("active", "0");   
     diceimages();
     messageDiceHold();
+    countRollDice = 0 ;
     }   
 }
 
-/// function pour cumuler les poinst du lancé du dé
-//you pass the game to
-//You've lost
-//You've won
-const rollDice = ()=>{
+/// function pour cumuler les poinst du lancé du dé   //you have lost player 2
+const rollDice = ()=>{    
     dice.classList.add('shake');
 setTimeout(function(){
     dice.classList.remove('shake');
     diceValue = Math.floor(Math.random()* 6);
+
     dice.setAttribute('src',imagesDice[diceValue]);
+    if(diceValue === 0 && countRollDice > 0){           
+        if(Number(containerPlayer1.getAttribute('active')) === 1){
+            scoreCurrentPlayer1.textContent = 0;
+        }else{
+            scoreCurrentPlayer2.textContent = 0;
+        }
+        changePlayer()        
+        }
+
     textDice.classList.remove('text-dice-disable');
     textDice.classList.add('text-dice');
     textDice.textContent = `Your rolls is ${diceValue + 1}`;        
     },300); 
-    buttonHold.classList.remove('items-hold-disable');
+    buttonHold.classList.remove('items-disable');
     buttonHold.classList.add('items-hold');
-    scoreCurrent();
+    calcScoreCurrent();
+    countRollDice++
 }
 
 
 // chargement de page du jeu //
 window.onload = () => {
     reset();
-
 };
 
 // ecoute du bouton new game du jeu //

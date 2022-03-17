@@ -226,7 +226,7 @@ h2{
     align-items: center;
 }
 
-.items-hold-disable{
+.items-disable{
     opacity: 0.5;
     pointer-events: none;
 }
