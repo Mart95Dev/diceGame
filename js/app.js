@@ -26,13 +26,11 @@ const imagesDice = [
 ]
 let diceValue = 0;
 let attributPlayer = 0;
-let diceValueTemp = 0;
 let countRollDice = 0;
-
 //////////////////////////////////////////
 
 
-//functions ---------------------------------------//
+//----------------------------functions ---------------------------------------//
 
 //function initialisation text-dice new game
 const diceInit = ()=>{
@@ -62,6 +60,12 @@ const messageDiceHold = ()=>{
         buttonHold.classList.add('items-disable');
     }
 
+    if(Number(scoreGlobalPlayer2.textContent) >= 100){
+        textDice.textContent = 'You have Won Player 2'
+        buttonDiceRolls.classList.add('items-disable');
+        buttonHold.classList.add('items-disable');
+    }
+
 }
 
 // calcul score current player
@@ -70,24 +74,22 @@ const calcScoreCurrent = ()=>{
     if(Number(containerPlayer1.getAttribute('active')) === 1){  
               
         if(diceValue === 0 && countRollDice === 0){
-            // diceValueTemp = 0;
+            
             let scoreCurrentTemp = diceValue;    
              scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;             
         }else{           
-            // diceValueTemp = diceValue + 1;
+           
             let scoreCurrentTemp = diceValue + 1;    
             scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;
         };
     } 
     
     if(Number(containerPlayer2.getAttribute('active')) === 1){
-        if(diceValue === 0 && countRollDice === 0){
-            diceValueTemp = 0;
-            let scoreCurrentTemp = diceValueTemp;    
+        if(diceValue === 0 && countRollDice === 0){           
+            let scoreCurrentTemp = diceValue;    
              scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;             
-        }else{           
-            diceValueTemp = diceValue + 1;
-            let scoreCurrentTemp = diceValueTemp;    
+        }else{                
+            let scoreCurrentTemp = diceValue + 1;   
             scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;
         };
     } 
@@ -111,7 +113,7 @@ const reset = ()=>{
     textDice.classList.remove('text-dice'); 
     buttonHold.classList.remove('items-hold');
     buttonHold.classList.add('items-disable');
-    countDice = 1;
+    countRollDice = 0;
     return;   
 }
 
@@ -175,7 +177,7 @@ if (attributPlayer === 1){
     }   
 }
 
-/// function pour cumuler les poinst du lancé du dé   //you have lost player 2
+/// function pour cumuler les poinst du lancé du dé
 const rollDice = ()=>{    
     dice.classList.add('shake');
 setTimeout(function(){
@@ -201,7 +203,7 @@ setTimeout(function(){
     calcScoreCurrent();
     countRollDice++
 }
-
+//----------------------------------------------------------------------------------------------//
 
 // chargement de page du jeu //
 window.onload = () => {
