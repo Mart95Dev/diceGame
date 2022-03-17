@@ -74,11 +74,9 @@ const calcScoreCurrent = ()=>{
     if(Number(containerPlayer1.getAttribute('active')) === 1){  
               
         if(diceValue === 0 && countRollDice === 0){
-            
             let scoreCurrentTemp = diceValue;    
              scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;             
         }else{           
-           
             let scoreCurrentTemp = diceValue + 1;    
             scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;
         };
@@ -113,6 +111,7 @@ const reset = ()=>{
     textDice.classList.remove('text-dice'); 
     buttonHold.classList.remove('items-hold');
     buttonHold.classList.add('items-disable');
+    buttonDiceRolls.classList.remove('items-disable');
     countRollDice = 0;
     return;   
 }
@@ -179,11 +178,10 @@ if (attributPlayer === 1){
 
 /// function pour cumuler les poinst du lancé du dé
 const rollDice = ()=>{    
-    dice.classList.add('shake');
+dice.classList.add('shake');
 setTimeout(function(){
     dice.classList.remove('shake');
     diceValue = Math.floor(Math.random()* 6);
-
     dice.setAttribute('src',imagesDice[diceValue]);
     if(diceValue === 0 && countRollDice > 0){           
         if(Number(containerPlayer1.getAttribute('active')) === 1){
@@ -193,15 +191,17 @@ setTimeout(function(){
         }
         changePlayer()        
         }
-
+if (Number(scoreGlobalPlayer1.textContent) >= 100 || Number(scoreGlobalPlayer2.textContent) >= 100){
+    messageDiceHold();
+}
     textDice.classList.remove('text-dice-disable');
     textDice.classList.add('text-dice');
     textDice.textContent = `Your rolls is ${diceValue + 1}`;        
-    },300); 
-    buttonHold.classList.remove('items-disable');
-    buttonHold.classList.add('items-hold');
-    calcScoreCurrent();
-    countRollDice++
+},300); 
+buttonHold.classList.remove('items-disable');
+buttonHold.classList.add('items-hold');
+calcScoreCurrent();
+countRollDice++
 }
 //----------------------------------------------------------------------------------------------//
 
