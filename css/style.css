@@ -1,7 +1,6 @@
-@import url(base.css);
+@import url(/css/base.css);
 
 /* mise en page de la page*/
-
 body{
     font-family: "lato", sans-serif;
     font-size: calc(0.3rem + 1.5vw);
@@ -212,7 +211,7 @@ h2{
      transform: rotate(360deg);
  }
 }
-
+CC
 .bloc-items{   
     display: flex;
     flex-direction: column;
