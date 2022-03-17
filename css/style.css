@@ -1,6 +1,7 @@
 @import url(base.css);
 
 /* mise en page de la page*/
+
 body{
     font-family: "lato", sans-serif;
     font-size: calc(0.3rem + 1.5vw);
@@ -89,6 +90,7 @@ body{
 }
 
 /* box shadow container game */
+
 .right {
     box-shadow: 5px 0 5px -5px rgb(20, 20, 20);
 }
@@ -202,7 +204,7 @@ h2{
     animation: shake 0.5s infinite;
 }
 
-/* animation dice */
+/* animation*/
 @keyframes shake{
  from{
     transform: rotate(0deg); 
@@ -211,7 +213,7 @@ h2{
      transform: rotate(360deg);
  }
 }
-CC
+
 .bloc-items{   
     display: flex;
     flex-direction: column;
