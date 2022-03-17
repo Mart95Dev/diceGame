@@ -1,5 +1,4 @@
 // variables  DOM//
-
 const containerPlayer1 = document.querySelector('.container-player-1');
 const containerPlayer2 = document.querySelector('.container-player-2');
 const circlePlayer1 = document.getElementById('circle-player-1');
@@ -74,21 +73,21 @@ const calcScoreCurrent = ()=>{
     if(Number(containerPlayer1.getAttribute('active')) === 1){  
               
         if(diceValue === 0 && countRollDice === 0){
-            let scoreCurrentTemp = diceValue;    
-             scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;             
+            let scoreCurrentTemp = Number(scoreCurrentPlayer1.textContent);   
+             scoreCurrentPlayer1.textContent = scoreCurrentTemp + diceValue;             
         }else{           
-            let scoreCurrentTemp = diceValue + 1;    
-            scoreCurrentPlayer1.textContent = Number(scoreCurrentPlayer1.textContent) + scoreCurrentTemp;
+            let scoreCurrentTemp = Number(scoreCurrentPlayer1.textContent);    
+            scoreCurrentPlayer1.textContent = scoreCurrentTemp + diceValue + 1;
         };
     } 
     
     if(Number(containerPlayer2.getAttribute('active')) === 1){
-        if(diceValue === 0 && countRollDice === 0){           
-            let scoreCurrentTemp = diceValue;    
-             scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;             
-        }else{                
-            let scoreCurrentTemp = diceValue + 1;   
-            scoreCurrentPlayer2.textContent = Number(scoreCurrentPlayer2.textContent) + scoreCurrentTemp;
+        if(diceValue === 0 && countRollDice === 0){
+            let scoreCurrentTemp = Number(scoreCurrentPlayer2.textContent);   
+             scoreCurrentPlayer2.textContent = scoreCurrentTemp + diceValue;             
+        }else{           
+            let scoreCurrentTemp = Number(scoreCurrentPlayer2.textContent);    
+            scoreCurrentPlayer2.textContent = scoreCurrentTemp + diceValue + 1;
         };
     } 
 }
@@ -191,16 +190,18 @@ setTimeout(function(){
         }
         changePlayer()        
         }
-if (Number(scoreGlobalPlayer1.textContent) >= 100 || Number(scoreGlobalPlayer2.textContent) >= 100){
-    messageDiceHold();
-}
+        calcScoreCurrent();
+
+        if (Number(scoreGlobalPlayer1.textContent) >= 20 || Number(scoreGlobalPlayer2.textContent) >= 20){
+            messageDiceHold();
+        }
+
     textDice.classList.remove('text-dice-disable');
     textDice.classList.add('text-dice');
     textDice.textContent = `Your rolls is ${diceValue + 1}`;        
 },300); 
 buttonHold.classList.remove('items-disable');
 buttonHold.classList.add('items-hold');
-calcScoreCurrent();
 countRollDice++
 }
 //----------------------------------------------------------------------------------------------//
