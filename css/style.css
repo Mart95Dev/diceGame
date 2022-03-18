@@ -269,6 +269,37 @@ button:hover{
 
 /**************************************************************/
 /* --- responsive --- */
+@media (min-width: 320px) {
+    .container-game{
+        min-width: 320px;
+        
+    }
+    
+    h2{
+        font-size: 1.2rem;
+    }
+    
+    .bloc-new-game{
+    margin-top: -110px;
+    }
+    
+    .bloc-dice{
+    margin-top: 90px;
+    }
+    
+    .items-roll-dice{
+        margin-top: 20px;
+    }
+    
+    .round{
+    margin-top: 80px;
+    }
+    
+    .text-dice{
+        visibility: hidden;
+    }
+}
+
 @media (min-width: 360px) {
 .container-game{
     min-width: 360px;
@@ -280,10 +311,6 @@ h2{
 
 .bloc-new-game{
 margin-top: -90px;
-}
-
-.bloc-dice{
-
 }
 
 .items-roll-dice{
